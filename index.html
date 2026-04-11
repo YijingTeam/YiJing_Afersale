@@ -5,174 +5,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>奕境售后管理系统</title>
 <style>
-body{margin:0;padding:0;font-family:"Microsoft YaHei";background:#f5f5f5;}
-.main{display:flex;min-height:100vh;}
-.left-menu{width:220px;background:#2f4050;color:#fff;}
-.left-menu ul{list-style:none;padding:0;margin:0;}
-.first-menu{display:block;padding:12px 15px;background:#1f2d3d;color:#fff;text-decoration:none;font-size:14px;}
-.second-menu{display:block;padding:10px 15px 10px 25px;background:#2f4050;color:#fff;text-decoration:none;font-size:13px;}
-.third-menu{display:block;padding:10px 15px 10px 35px;background:#3d5166;color:#fff;text-decoration:none;font-size:13px;}
-.second-menu, .third-menu{display:none;}
-li:hover .second-menu{display:block;}
-li:hover .third-menu{display:block;}
-.right-content{flex:1;padding:20px;}
-.top-box{background:#fff;padding:15px;margin-bottom:15px;border-left:4px solid #2f4050;}
-.content{background:#fff;padding:20px;}
-.search{margin-bottom:15px;}
-.search input{padding:6px 10px;margin-right:5px;}
-.search button{padding:6px 12px;background:#2f4050;color:#fff;border:none;}
-table{width:100%;border-collapse:collapse;background:#fff;}
-table td,table th{border:1px solid #ddd;padding:10px;text-align:left;font-size:14px;}
-/* 折叠菜单增强 */
-.left-menu li {
-  list-style: none;
+/* 最终清爽蓝色主题 */
+body{ margin:0; padding:0; font-family:"Microsoft YaHei"; background:#f6f8fc; }
+.main{ display:flex; min-height:100vh; }
+.left-menu{ width:220px; background:#1F458E; color:white; }
+.left-menu ul,.left-menu li{ list-style:none; margin:0; padding:0; }
+
+.first-menu{
+  display:block; padding:12px 18px;
+  background:#183774; color:white;
+  text-decoration:none; cursor:pointer;
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
-.left-menu .second-menu,
-.left-menu .third-menu {
-  display: none;
+.second-menu{ display:none; }
+.second-menu a{
+  display:block; padding:10px 25px;
+  background:#2954A6; color:white;
+  text-decoration:none;
 }
-.left-menu .show {
-  display: block !important;
+.third-menu{ display:none; }
+.third-menu a{
+  display:block; padding:10px 35px;
+  background:#3667C8; color:white;
+  text-decoration:none;
 }
-.first-menu {
-  cursor: pointer;
-  user-select: none;
-}
-  /* 菜单布局修复：防止挤在一起 */
-.left-menu ul,
-.left-menu li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.second-menu,
-.third-menu {
-  padding-left: 0 !important;
-  margin-left: 0 !important;
-}
-  /* 清爽蓝色主题 UI */
-body {
-  background: #f6f8fc;
-}
-.left-menu {
-  background: #1a3b6e;
-}
-.first-menu {
-  background: #163562;
-  border-bottom: 1px solid #1b4279;
-}
-.second-menu {
-  background: #234a8a;
-}
-.third-menu {
-  background: #2b5ba8;
-}
-.top-box {
-  background: #ffffff;
-  border-left: 4px solid #2b5ba8;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-.content {
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  border-radius: 4px;
-}
-.search button {
-  background: #2b5ba8;
-  border-radius: 3px;
-  cursor: pointer;
-}
-table th {
-  background: #ebf2fb;
-  color: #163562;
-}
-table td {
-  border-color: #eaeef6;
-}
-  /* 最终UI美化 */
-.first-menu {
-  padding: 12px 18px;
-  font-size: 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.second-menu a {
-  padding: 10px 25px;
-  font-size: 13px;
-}
-.third-menu a {
-  padding: 10px 35px;
-  font-size: 12px;
-}
-.top-box {
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-.content {
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-table {
-  border-radius: 4px;
-  overflow: hidden;
-}
+
+.content{ flex:1; padding:20px; }
+.page{ display:none; }
+.page.show{ display:block; }
 </style>
 </head>
 <body>
 <div class="main">
   <div class="left-menu">
-    <ul>
-      <li>
-  <a class="first-menu">首页</a>
-</li>
-<li>
-  <a class="first-menu">系统总览</a>
-</li>
-<li>
-  <a class="first-menu">基础数据</a>
-</li>
-<li>
-  <a class="first-menu">商品管理</a>
-  <ul class="second-menu">
-    <li><a>商品列表</a></li>
-    <li><a>商品分类</a></li>
-  </ul>
-</li>
-<li>
-  <a class="first-menu">库存管理</a>
-  <ul class="second-menu">
-    <li><a>库存查询</a></li>
-    <li><a>入库管理</a></li>
-    <li><a>出库管理</a></li>
-  </ul>
-</li>
-<li>
-  <a class="first-menu">备件管理</a>
-  <ul class="second-menu">
-    <li><a>备件信息</a>
-      <ul class="third-menu">
-        <li><a>备件列表</a></li>
-        <li><a>备件入库</a></li>
-        <li><a>备件出库</a></li>
+   <!-- 顶部标题 -->
+<div style="background:#1F458E; color:white; padding:14px 20px; font-size:16px; font-weight:bold;">
+    奕境售后管理系统
+</div>
+
+<!-- 左侧菜单 -->
+<div class="left-menu">
+  <ul>
+    <li><a class="first-menu">首页</a></li>
+    <li>
+      <a class="first-menu">商品管理</a>
+      <ul class="second-menu">
+        <li><a>商品列表</a></li>
+        <li><a>商品分类</a></li>
       </ul>
     </li>
-    <li><a>备件分类</a></li>
+    <li>
+      <a class="first-menu">库存管理</a>
+      <ul class="second-menu">
+        <li><a>库存查询</a></li>
+        <li><a>入库管理</a></li>
+        <li><a>出库管理</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class="first-menu">备件管理</a>
+      <ul class="second-menu">
+        <li><a>备件信息</a>
+          <ul class="third-menu">
+            <li><a>备件列表</a></li>
+            <li><a>备件入库</a></li>
+            <li><a>备件出库</a></li>
+          </ul>
+        </li>
+        <li><a>备件分类</a></li>
+      </ul>
+    </li>
+    <li><a class="first-menu">工单管理</a></li>
+    <li><a class="first-menu">报表统计</a></li>
+    <li><a class="first-menu">系统设置</a></li>
   </ul>
-</li>
-<li>
-  <a class="first-menu">工单管理</a>
-</li>
-<li>
-  <a class="first-menu">报表统计</a>
-</li>
-<li>
-  <a class="first-menu">系统设置</a>
-</li>
-    </ul>
-  </div>
-  <div class="right-content">
-    <div class="top-box">
-      <h3>备件信息</h3>
-    </div>
+</div>
     <div class="content">
       <div class="search">
         <input type="text" placeholder="备件名称">
@@ -200,24 +107,20 @@ table {
   </div>
 </div>
   <script>
-// 左侧菜单折叠展开功能
-document.querySelectorAll('.first-menu').forEach(item => {
-  item.addEventListener('click', function(e) {
-    let sub = this.nextElementSibling;
-    if (sub && sub.classList.contains('second-menu')) {
-      sub.classList.toggle('show');
-    }
-  });
-});
-document.querySelectorAll('.second-menu').forEach(item => {
-  item.addEventListener('click', function(e) {
+// 菜单展开/收起
+document.querySelectorAll('.first-menu').forEach(el => {
+  el.onclick = () => {
+    let sub = el.nextElementSibling;
+    if(sub) sub.style.display = sub.style.display=='block'?'none':'block';
+  }
+})
+document.querySelectorAll('.second-menu a').forEach(el => {
+  el.onclick = (e) => {
     e.stopPropagation();
-    let sub = this.nextElementSibling;
-    if (sub && sub.classList.contains('third-menu')) {
-      sub.classList.toggle('show');
-    }
-  });
-});
+    let sub = el.nextElementSibling;
+    if(sub) sub.style.display = sub.style.display=='block'?'none':'block';
+  }
+})
 </script>
   <script>
 // 菜单展开收起
