@@ -83,6 +83,12 @@ html, body {
   overflow-y: auto;
   flex: 1;
 }
+    .left-menu {
+  transition: all 0.3s;
+}
+.left-menu.hide {
+  width: 0 !important;
+}
   </style>
 </head>
 <body>
@@ -129,6 +135,16 @@ html, body {
           <a class="first-menu">系统设置</a>
         </li>
       </ul>
+      <!-- 左侧菜单底部：收起展开按钮 -->
+<div id="toggleBtn"
+     style="text-align:center;
+            padding:12px;
+            color:white;
+            background:#183774;
+            cursor:pointer;
+            border-top:1px solid rgba(255,255,255,0.1);">
+  ◀ 收起菜单
+</div>
     </div>
     <div class="content">
       <div id="page1" class="page show">备件目录页面内容</div>
@@ -178,6 +194,17 @@ html, body {
     document.getElementById('toggleMenu').onclick = function() {
       document.querySelector('.left-menu').classList.toggle('hide');
     }
+    // 左侧菜单 收起 / 展开
+document.getElementById('toggleBtn').onclick = function () {
+  let menu = document.querySelector('.left-menu');
+  menu.classList.toggle('hide');
+  
+  if(menu.classList.contains('hide')){
+    this.textContent = '> 展开';
+  }else{
+    this.textContent = '< 收起';
+  }
+};
   </script>
 </body>
 </html>
