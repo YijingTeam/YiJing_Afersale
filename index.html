@@ -46,6 +46,36 @@ body{ margin:0; padding:0; font-family:"Microsoft YaHei"; background:#f6f8fc; }
   text-decoration: none;
   font-size: 12px;
 }
+  /* 菜单箭头 */
+.first-menu::after,
+.second-menu a::after {
+  content: '▶';
+  float: right;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.first-menu.open::after,
+.second-menu a.open::after {
+  content: '▼';
+}
+  /* 左右区域独立滚动 */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+.main {
+  display: flex;
+  height: 100vh;
+}
+.left-menu {
+  height: 100%;
+  overflow-y: auto;
+}
+.content {
+  height: 100vh;
+  overflow-y: auto;
+  flex: 1;
+}
 </style>
 </head>
 <body>
