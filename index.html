@@ -211,4 +211,643 @@
     }
 
     /* 主内容区 */
-    .main
+    .main-content {
+      flex: 1;
+      margin-left: 220px;
+      padding: 20px;
+      background: #f5f5f5;
+      min-height: 100vh;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar.collapsed ~ .main-content {
+      margin-left: 50px;
+    }
+
+    .content-header {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .content-header h1 {
+      color: #333;
+      font-size: 24px;
+    }
+
+    .welcome-card {
+      background: linear-gradient(135deg, var(--primary-color), #a52840);
+      color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .welcome-card h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .welcome-card p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* 按钮样式 - 使用主题色 */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #6d1526;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    /* 图标样式 */
+    .icon-workbench::before { content: "📊"; }
+    .icon-afterSales::before { content: "🔧"; }
+    .icon-parts::before { content: "🧰"; }
+    .icon-report::before { content: "📈"; }
+    .icon-settings::before { content: "⚙️"; }
+
+    /* 内容页面隐藏/显示 */
+    .page-content { display: none; }
+    .page-content.active { display: block; }
+
+    /* 维修营业日报样式 */
+    .rpt{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:13px;color:#333;display:flex;flex-direction:column;gap:12px}
+    .hdr{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:0.5px solid #e0e0e0;position:relative}
+    .hdr-title{font-size:15px;font-weight:700}
+    .hdr-meta{font-size:12px;color:#666}
+    .hdr-center{text-align:center;position:absolute;left:50%;transform:translateX(-50%)}
+    .hdr-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+    .date-nav{display:flex;align-items:center;gap:4px}
+    .date-nav button{background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;width:26px;height:26px;cursor:pointer;font-size:12px;transition:all .2s}
+    .date-nav button:hover{background:#e8e8e8}
+    .date-input{border:1px solid #e0e0e0;border-radius:4px;padding:4px 8px;font-size:12px;outline:none;width:120px}
+    .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;background:#D4EDDA;color:#155724}
+    .kpi-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .kpi{background:#fff;border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+    .kpi-label{font-size:12px;color:#666;margin-bottom:5px}
+    .kpi-val{font-size:22px;font-weight:500}
+    .kpi-sub{font-size:11px;margin-top:4px}
+    .up{color:#1D9E75}.dn{color:#D85A30}.neu{color:#666}
+    .row2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start}
+    .row3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start}
+    .card{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+    .card-title{font-size:13px;font-weight:700;margin-bottom:10px}
+    .ch-wrap{position:relative;width:100%;overflow:hidden}
+    .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:#666;margin-bottom:8px}
+    .dot{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px;vertical-align:middle}
+    .tech-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid #e0e0e0}
+    .tech-row:last-child{border-bottom:none}
+    .av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+    .bar-bg{flex:1;height:6px;background:#f0f0f0;border-radius:3px;overflow:hidden;margin:0 8px}
+    .bar-f{height:100%;border-radius:3px}
+    .s-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:6px;border:0.5px solid #e0e0e0;margin-bottom:6px}
+    .s-row:last-child{margin-bottom:0}
+    .s-tag{font-size:11px;padding:2px 7px;border-radius:3px;font-weight:500;white-space:nowrap;flex-shrink:0}
+    .sw{background:#FAC775;color:#412402}
+    .sr{background:#B5D4F4;color:#042C53}
+    .sq{background:#EEEDFE;color:#26215C}
+    .sd{background:#C0DD97;color:#173404}
+    .tech-scroll{max-height:220px;overflow-y:auto}
+    .order-scroll{max-height:220px;overflow-y:auto}
+  </style>
+</head>
+<body>
+    <!-- 侧边导航栏 -->
+  <nav class="sidebar" id="sidebar">
+    <div class="system-title">奕境售后管理系统</div>
+    
+    <div class="nav-menu">
+      <!-- 工作台 -->
+      <div class="nav-item">
+        <div class="nav-link">
+          <span class="nav-icon icon-workbench"></span>
+          <span class="nav-text">工作台</span>
+          <span class="nav-arrow"></span>
+        </div>
+        <div class="submenu">
+          <div class="submenu-item" onclick="showContent('dashboard')">工作台首页</div>
+        </div>
+      </div>
+      
+      <!-- 售后管理 -->
+      <div class="nav-item">
+        <div class="nav-link">
+          <span class="nav-icon icon-afterSales"></span>
+          <span class="nav-text">售后管理</span>
+          <span class="nav-arrow"></span>
+        </div>
+      </div>
+      
+      <!-- 配件管理 -->
+      <div class="nav-item">
+        <div class="nav-link">
+          <span class="nav-icon icon-parts"></span>
+          <span class="nav-text">配件管理</span>
+          <span class="nav-arrow"></span>
+        </div>
+      </div>
+      
+      <!-- 报表管理 -->
+      <div class="nav-item">
+        <div class="nav-link">
+          <span class="nav-icon icon-report"></span>
+          <span class="nav-text">报表管理</span>
+          <span class="nav-arrow"></span>
+        </div>
+        <div class="submenu">
+          <div class="submenu-item" onclick="showContent('service-report')">服务报表
+            <span class="nav-arrow" style="margin-left:auto;transform:rotate(0deg)"></span>
+          </div>
+          <div class="submenu submenu-nested">
+            <div class="submenu-item submenu-item-nested" onclick="showContent('repair-daily-report')">维修营业日报</div>
+          </div>
+          <div class="submenu-item" onclick="showContent('manage-report')">管理报表</div>
+          <div class="submenu-item" onclick="showContent('parts-report')">配件报表</div>
+        </div>
+      </div>
+      
+      <!-- 系统设置 -->
+      <div class="nav-item">
+        <div class="nav-link">
+          <span class="nav-icon icon-settings"></span>
+          <span class="nav-text">系统设置</span>
+          <span class="nav-arrow"></span>
+        </div>
+        <div class="submenu">
+          <div class="submenu-item" onclick="showContent('user')">用户管理</div>
+          <div class="submenu-item" onclick="showContent('role')">角色权限</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部收起/展开按钮 -->
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <div class="toggle-icon">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 第一条横线（长） -->
+          <line x1="1" y1="4" x2="16" y2="4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- 第二条横线（中间，短）+ > 箭头 -->
+          <line x1="1" y1="11" x2="10" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="8" x2="17" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="14" x2="17" y2="11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- 第三条横线（长） -->
+          <line x1="1" y1="18" x2="16" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="page-content active" id="page-dashboard">
+      <div class="welcome-card">
+        <h2>欢迎使用奕境售后管理系统</h2>
+        <p>请从左侧菜单选择功能模块</p>
+      </div>
+      <div style="margin-top: 30px;">
+        <button class="btn" onclick="alert('这是主题色按钮样式')">主要按钮</button>
+        <button class="btn btn-outline" style="margin-left: 10px;">次要按钮</button>
+      </div>
+    </div>
+
+    <!-- 维修营业日报 -->
+    <div id="page-repair-daily-report" class="page-content">
+      <div class="rpt">
+        <div class="hdr">
+          <div class="hdr-center">
+            <div class="hdr-title">维修营业日报</div>
+            <div class="hdr-meta" id="dateMeta">2026年5月19日（星期二）截至 11:00 更新</div>
+          </div>
+          <div class="hdr-right">
+            <div class="date-nav">
+              <button onclick="changeDate(-1)">◀</button>
+              <input type="date" id="dateInput" class="date-input" onchange="refresh(this.value)">
+              <button onclick="changeDate(1)">▶</button>
+            </div>
+            <span class="badge">营业中</span>
+          </div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-label">今日接车台次</div><div class="kpi-val" id="kpi-cars-in">--</div><div class="kpi-sub" id="kpi-cars-in-sub">--</div></div>
+          <div class="kpi"><div class="kpi-label">已完工台次</div><div class="kpi-val" id="kpi-cars-out">--</div><div class="kpi-sub" id="kpi-cars-out-sub">--</div></div>
+          <div class="kpi"><div class="kpi-label">营业额（元）</div><div class="kpi-val" id="kpi-revenue">--</div><div class="kpi-sub" id="kpi-revenue-sub">--</div></div>
+          <div class="kpi"><div class="kpi-label">平均等待时长</div><div class="kpi-val" id="kpi-wait">--</div><div class="kpi-sub" id="kpi-wait-sub">--</div></div>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-label">工单总数</div><div class="kpi-val" id="kpi-orders">--</div><div class="kpi-sub" id="kpi-orders-sub">--</div></div>
+          <div class="kpi"><div class="kpi-label">工时费收入（元）</div><div class="kpi-val" id="kpi-labor">--</div><div class="kpi-sub" id="kpi-labor-sub">--</div></div>
+          <div class="kpi"><div class="kpi-label">配件收入（元）</div><div class="kpi-val" id="kpi-parts">--</div><div class="kpi-sub" id="kpi-parts-sub">--</div></div>
+          <div class="kpi"><div class="kpi-label">客户满意度</div><div class="kpi-val" id="kpi-score">--</div><div class="kpi-sub" id="kpi-score-sub">--</div></div>
+        </div>
+
+        <div class="row2">
+          <div class="card">
+            <div class="card-title">全天接车量趋势（按小时）</div>
+            <div class="legend">
+              <span><span class="dot" style="background:#185FA5"></span>接车</span>
+              <span><span class="dot" style="background:#1D9E75"></span>交车</span>
+            </div>
+            <div class="ch-wrap" style="height:200px">
+              <canvas id="c1" role="img" aria-label="全天接车交车趋势折线图" style="display:block;width:100%!important;height:200px!important;max-height:200px">暂无数据</canvas>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">维修类别</div>
+            <div class="ch-wrap" style="height:160px">
+              <canvas id="c2" role="img" aria-label="维修类别环形图" style="display:block;width:100%!important;height:160px!important;max-height:160px">暂无数据</canvas>
+            </div>
+            <div class="legend" style="margin-top:10px" id="legend2">
+              <span><span class="dot" style="background:#185FA5"></span>钣金 <span id="pct1">--</span>%</span>
+              <span><span class="dot" style="background:#1D9E75"></span>机修 <span id="pct2">--</span>%</span>
+              <span><span class="dot" style="background:#BA7517"></span>喷漆 <span id="pct3">--</span>%</span>
+              <span><span class="dot" style="background:#534AB7"></span>选装 <span id="pct4">--</span>%</span>
+              <span><span class="dot" style="background:#D85A30"></span>外包 <span id="pct5">--</span>%</span>
+              <span><span class="dot" style="background:#FAC775"></span>加装 <span id="pct6">--</span>%</span>
+              <span><span class="dot" style="background:#85B7EB"></span>其他 <span id="pct7">--</span>%</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">实时工单状态</div>
+            <div id="orderList" class="order-scroll"></div>
+          </div>
+        </div>
+
+        <div class="row3">
+          <div class="card">
+            <div class="card-title">技师工单完成排行</div>
+            <div id="techList" class="tech-scroll"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">车型分布</div>
+            <div class="ch-wrap" style="height:200px">
+              <canvas id="c3" role="img" aria-label="车型分布水平条形图" style="display:block;width:100%!important;height:200px!important;max-height:200px">暂无数据</canvas>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">维修项目类型</div>
+            <div class="ch-wrap" style="height:220px">
+              <canvas id="c4" role="img" aria-label="维修项目类型条形图" style="display:block;width:100%!important;height:220px!important;max-height:220px">暂无数据</canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 其他报表页面占位 -->
+    <div id="page-service-report" class="page-content">
+      <div style="padding:40px;text-align:center;color:#666;">服务报表页面开发中...</div>
+    </div>
+    <div id="page-manage-report" class="page-content">
+      <div style="padding:40px;text-align:center;color:#666;">管理报表页面开发中...</div>
+    </div>
+    <div id="page-parts-report" class="page-content">
+      <div style="padding:40px;text-align:center;color:#666;">配件报表页面开发中...</div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script>
+    // 侧边栏展开/收起
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+      
+      // 关闭所有子菜单
+      document.querySelectorAll('.submenu').forEach(sub => {
+        sub.classList.remove('open');
+      });
+      
+      // 旋转箭头
+      document.querySelectorAll('.nav-arrow').forEach(arrow => {
+        arrow.style.transform = sidebar.classList.contains('collapsed') 
+          ? 'rotate(-90deg)' : 'rotate(0deg)';
+      });
+    }
+
+    // 点击菜单项时切换子菜单
+    document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('collapsed')) {
+          return; // 收起状态不展开子菜单
+        }
+        
+        const submenu = this.nextElementSibling;
+        if (submenu && submenu.classList.contains('submenu')) {
+          e.stopPropagation();
+          submenu.classList.toggle('open');
+          
+          // 旋转箭头
+          const arrow = this.querySelector('.nav-arrow');
+          if (arrow) {
+            arrow.style.transform = submenu.classList.contains('open') 
+              ? 'rotate(180deg)' : 'rotate(0deg)';
+          }
+        }
+      });
+    });
+
+    // 处理嵌套子菜单的展开/收起
+    document.querySelectorAll('.submenu-item').forEach(item => {
+      // 检查是否有嵌套子菜单
+      if (item.nextElementSibling && item.nextElementSibling.classList.contains('submenu-nested')) {
+        // 给有嵌套子菜单的项添加展开/收起功能
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const nestedSubmenu = this.nextElementSibling;
+          if (nestedSubmenu && nestedSubmenu.classList.contains('submenu-nested')) {
+            nestedSubmenu.classList.toggle('open');
+          }
+        });
+      }
+    });
+
+    // 显示内容
+    function showContent(module) {
+      // 隐藏所有页面
+      document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+
+      // 显示对应页面
+      const pageId = 'page-' + module;
+      const page = document.getElementById(pageId);
+      if (page) {
+        page.classList.add('active');
+        // 如果是维修日报，初始化图表
+        if (module === 'repair-daily-report') {
+          initRepairReport();
+        }
+      }
+    }
+
+    // 维修营业日报初始化
+    function initRepairReport() {
+      var today = new Date();
+      var y = today.getFullYear();
+      var m = String(today.getMonth() + 1).padStart(2, '0');
+      var day = String(today.getDate()).padStart(2, '0');
+      var todayStr = y + '-' + m + '-' + day;
+      document.getElementById('dateInput').value = todayStr;
+      refresh(todayStr);
+    }
+
+    // 种子随机函数
+    function seededRand(dateStr, idx) {
+      var h = 0;
+      for (var i = 0; i < dateStr.length; i++) h = ((h << 5) - h + dateStr.charCodeAt(i)) | 0;
+      h = ((h ^ idx) * 1597334677) >>> 0;
+      return h / 4294967296;
+    }
+    function rand(dateStr, idx, min, max) {
+      return Math.round(min + (max - min) * seededRand(dateStr, idx));
+    }
+
+    // 日期导航
+    function changeDate(delta) {
+      var input = document.getElementById('dateInput');
+      var d = new Date(input.value + 'T00:00:00');
+      d.setDate(d.getDate() + delta);
+      var y = d.getFullYear();
+      var m = String(d.getMonth() + 1).padStart(2, '0');
+      var day = String(d.getDate()).padStart(2, '0');
+      var newDate = y + '-' + m + '-' + day;
+      input.value = newDate;
+      refresh(newDate);
+    }
+
+    // 刷新数据
+    function refresh(dateStr) {
+      // 更新日期显示
+      var d = new Date(dateStr + 'T00:00:00');
+      var weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      var dateStrCn = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+      document.getElementById('dateMeta').textContent = dateStrCn + '（' + weekdays[d.getDay()] + '）截至 11:00 更新';
+
+      // KPI数据 - 基于日期种子随机
+      var carsIn = rand(dateStr, 1, 25, 45);
+      var carsOut = rand(dateStr, 2, 20, 38);
+      var revenue = rand(dateStr, 3, 15000, 35000);
+      var waitTime = rand(dateStr, 4, 30, 90);
+      var totalOrders = rand(dateStr, 5, 30, 55);
+      var laborFee = rand(dateStr, 6, 5000, 12000);
+      var partsFee = rand(dateStr, 7, 8000, 20000);
+      var satisfaction = (rand(dateStr, 8, 45, 50) / 10).toFixed(1);
+      var completeRate = Math.round(carsOut / carsIn * 100);
+      var laborPct = Math.round(laborFee / revenue * 100);
+      var partsPct = Math.round(partsFee / revenue * 100);
+      var evalCount = rand(dateStr, 9, 8, 20);
+
+      document.getElementById('kpi-cars-in').textContent = carsIn;
+      document.getElementById('kpi-cars-in-sub').className = 'kpi-sub up';
+      document.getElementById('kpi-cars-in-sub').textContent = '▲ ' + rand(dateStr, 20, 3, 10) + ' vs 昨日';
+
+      document.getElementById('kpi-cars-out').textContent = carsOut;
+      document.getElementById('kpi-cars-out-sub').className = 'kpi-sub neu';
+      document.getElementById('kpi-cars-out-sub').textContent = '完工率 ' + completeRate + '%';
+
+      document.getElementById('kpi-revenue').textContent = '¥' + revenue.toLocaleString();
+      document.getElementById('kpi-revenue-sub').className = 'kpi-sub up';
+      var revChange = rand(dateStr, 21, 5, 20);
+      document.getElementById('kpi-revenue-sub').textContent = '▲ ' + revChange + '% vs 昨日';
+
+      document.getElementById('kpi-wait').textContent = waitTime + ' min';
+      document.getElementById('kpi-wait-sub').className = 'kpi-sub dn';
+      document.getElementById('kpi-wait-sub').textContent = '▼ ' + rand(dateStr, 22, 3, 10) + 'min vs 昨日';
+
+      document.getElementById('kpi-orders').textContent = totalOrders;
+      document.getElementById('kpi-orders-sub').className = 'kpi-sub neu';
+      document.getElementById('kpi-orders-sub').textContent = '含续修 ' + rand(dateStr, 23, 3, 10) + ' 单';
+
+      document.getElementById('kpi-labor').textContent = '¥' + laborFee.toLocaleString();
+      document.getElementById('kpi-labor-sub').className = 'kpi-sub up';
+      document.getElementById('kpi-labor-sub').textContent = '占比 ' + laborPct + '%';
+
+      document.getElementById('kpi-parts').textContent = '¥' + partsFee.toLocaleString();
+      document.getElementById('kpi-parts-sub').className = 'kpi-sub up';
+      document.getElementById('kpi-parts-sub').textContent = '占比 ' + partsPct + '%';
+
+      document.getElementById('kpi-score').textContent = satisfaction;
+      document.getElementById('kpi-score-sub').className = 'kpi-sub up';
+      document.getElementById('kpi-score-sub').textContent = '今日 ' + evalCount + ' 份评价';
+
+      // 维修项目类型百分比
+      var type1 = rand(dateStr, 40, 15, 25);
+      var type2 = rand(dateStr, 41, 20, 35);
+      var type3 = rand(dateStr, 42, 10, 20);
+      var type4 = rand(dateStr, 43, 5, 12);
+      var type5 = rand(dateStr, 44, 3, 8);
+      var type6 = rand(dateStr, 45, 2, 6);
+      var type7 = 100 - type1 - type2 - type3 - type4 - type5 - type6;
+      document.getElementById('pct1').textContent = type1;
+      document.getElementById('pct2').textContent = type2;
+      document.getElementById('pct3').textContent = type3;
+      document.getElementById('pct4').textContent = type4;
+      document.getElementById('pct5').textContent = type5;
+      document.getElementById('pct6').textContent = type6;
+      document.getElementById('pct7').textContent = type7;
+
+      // 销毁旧图表
+      if (window.chart1) { window.chart1.destroy(); }
+      if (window.chart2) { window.chart2.destroy(); }
+      if (window.chart3) { window.chart3.destroy(); }
+      if (window.chart4) { window.chart4.destroy(); }
+
+      // 趋势图
+      var el1 = document.getElementById('c1');
+      el1.width = el1.parentElement.offsetWidth;
+      el1.height = 200;
+      var hours = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+      var carsInArr = hours.map(function(_, i) { return rand(dateStr, 10 + i, 1, 8); });
+      var carsOutArr = hours.map(function(_, i) { return rand(dateStr, 30 + i, 0, 6); });
+      window.chart1 = new Chart(el1, {
+        type: 'line',
+        data: {
+          labels: hours,
+          datasets: [
+            {label: '接车', data: carsInArr, borderColor: '#185FA5', backgroundColor: 'rgba(24,95,165,0.08)', fill: true, tension: 0.35, pointRadius: 3, borderWidth: 2},
+            {label: '交车', data: carsOutArr, borderColor: '#1D9E75', backgroundColor: 'rgba(29,158,117,0.06)', fill: true, tension: 0.35, pointRadius: 3, borderWidth: 2}
+          ]
+        },
+        options: {
+          responsive: false,
+          plugins: {legend: {display: false}},
+          scales: {
+            x: {grid: {display: false}, ticks: {font: {size: 10}, autoSkip: false, maxRotation: 45}},
+            y: {grid: {color: 'rgba(0,0,0,0.06)'}, ticks: {font: {size: 10}}, beginAtZero: true}
+          }
+        }
+      });
+
+      // 环形图
+      var el2 = document.getElementById('c2');
+      el2.width = el2.parentElement.offsetWidth;
+      el2.height = 160;
+      window.chart2 = new Chart(el2, {
+        type: 'doughnut',
+        data: {
+          labels: ['钣金', '机修', '喷漆', '选装', '外包', '加装', '其他'],
+          datasets: [{data: [type1, type2, type3, type4, type5, type6, type7], backgroundColor: ['#185FA5', '#1D9E75', '#BA7517', '#534AB7', '#D85A30', '#FAC775', '#85B7EB'], borderWidth: 0, hoverOffset: 4}]
+        },
+        options: {
+          responsive: false,
+          cutout: '62%',
+          plugins: {legend: {display: false}, tooltip: {callbacks: {label: function(c) {return c.label + ': ' + c.parsed + '%'}}}}
+        }
+      });
+
+      // 车型分布
+      var el3 = document.getElementById('c3');
+      el3.width = el3.parentElement.offsetWidth;
+      el3.height = 200;
+      var carCounts = ['车型1', '车型2', '车型3', '车型4', '车型5'].map(function(_, i) { return rand(dateStr, 60 + i, 3, 15); });
+      window.chart3 = new Chart(el3, {
+        type: 'bar',
+        data: {
+          labels: ['车型1', '车型2', '车型3', '车型4', '车型5'],
+          datasets: [{data: carCounts, backgroundColor: ['#185FA5', '#378ADD', '#85B7EB', '#B5D4F4', '#E6F1FB'], borderWidth: 0, borderRadius: 3}]
+        },
+        options: {
+          responsive: false,
+          indexAxis: 'y',
+          plugins: {legend: {display: false}},
+          scales: {
+            x: {grid: {color: 'rgba(0,0,0,0.06)'}, ticks: {font: {size: 10}}, beginAtZero: true},
+            y: {grid: {display: false}, ticks: {font: {size: 10}}}
+          }
+        }
+      });
+
+      // 维修项目类型
+      var projectTypes = ['普通维修', '定保', '保险', '保修', '专案', '召回', '服务活动', '免费保养', 'PDI'];
+      var projectCounts = projectTypes.map(function(_, i) { return rand(dateStr, 70 + i, 2, 12); });
+      var el4 = document.getElementById('c4');
+      el4.width = el4.parentElement.offsetWidth;
+      el4.height = 220;
+      window.chart4 = new Chart(el4, {
+        type: 'bar',
+        data: {
+          labels: projectTypes,
+          datasets: [{data: projectCounts, backgroundColor: ['#185FA5', '#1D9E75', '#BA7517', '#534AB7', '#D85A30', '#FAC775', '#85B7EB', '#B5D4F4', '#EEEDFE'], borderWidth: 0, borderRadius: 3}]
+        },
+        options: {
+          responsive: false,
+          indexAxis: 'y',
+          plugins: {legend: {display: false}},
+          scales: {
+            x: {grid: {color: 'rgba(0,0,0,0.06)'}, ticks: {font: {size: 9}}, beginAtZero: true},
+            y: {grid: {display: false}, ticks: {font: {size: 9}}}
+          }
+        }
+      });
+
+      // 技师排行
+      var techNames = ['张磊', '王刚', '陈明', '李华', '刘涛', '赵强', '周伟', '吴洋'];
+      var techColors = [
+        {bg: '#E6F1FB', color: '#185FA5'},
+        {bg: '#C0DD97', color: '#173404'},
+        {bg: '#EEEDFE', color: '#26215C'},
+        {bg: '#FAECE7', color: '#4A1B0C'},
+        {bg: '#FAEEDA', color: '#412402'},
+        {bg: '#FAC775', color: '#412402'},
+        {bg: '#B5D4F4', color: '#042C53'},
+        {bg: '#D5E8D4', color: '#1B3D0E'}
+      ];
+      var techs = techNames.map(function(name, i) { return {name: name, bg: techColors[i].bg, color: techColors[i].color}; });
+      var techCounts = techs.map(function(t, i) { 
+        if (i === 7) return 0;
+        return rand(dateStr, 50 + i, 3, 10); 
+      });
+      var maxTech = Math.max.apply(null, techCounts);
+      var techHtml = '';
+      var barColors = ['#185FA5', '#1D9E75', '#534AB7', '#D85A30', '#BA7517', '#FAC775', '#B5D4F4', '#85B7EB'];
+      techs.forEach(function(t, i) {
+        var pct = techCounts[i] > 0 ? Math.round(techCounts[i] / maxTech * 100) : 0;
+        var barColor = barColors[i % barColors.length];
+        var countText = techCounts[i] > 0 ? techCounts[i] + '单' : '请假';
+        techHtml += '<div class="tech-row"><div class="av" style="background:' + t.bg + ';color:' + t.color + '">' + t.name + '</div><div class="bar-bg"><div class="bar-f" style="width:' + pct + '%;background:' + barColor + '"></div></div><div style="font-size:12px;color:#666;width:36px;text-align:right">' + countText + '</div></div>';
+      });
+      document.getElementById('techList').innerHTML = techHtml;
+
+      // 工单状态
+      var orderStatuses = ['接待完毕', '维修进行中', '追加', '结算进行中', '质检完毕', '维修进行中', '接待完毕', '结算进行中'];
+      var orderStatusTags = ['sw', 'sr', 'sq', 'sw', 'sq', 'sr', 'sw', 'sw'];
+      var orderStatusInfos = ['等待开工', '预计 12:30 完工', '追加项目中', '结算审核中', '质检中', '预计 14:00 完工', '等待开工', '结算审核中'];
+      var orderTypes = ['常规保养', '故障维修', '钣金喷漆', '常规保养', '故障维修', '机修', '喷漆', '选装'];
+      var orderHtml = '';
+      for (var i = 0; i < 8; i++) {
+        var num = 'A-' + String(1001 + i);
+        orderHtml += '<div class="s-row"><div style="min-width:0;flex:1;margin-right:8px"><div style="font-size:12px;font-weight:500">工单 ' + num + ' / ' + orderTypes[i] + '</div><div style="font-size:11px;color:#666">' + techs[i % 8].name + ' · ' + orderStatusInfos[i] + '</div></div><span class="s-tag ' + orderStatusTags[i] + '">' + orderStatuses[i] + '</span></div>';
+      }
+      document.getElementById('orderList').innerHTML = orderHtml;
+    }
+
+    // 默认显示工作台
+    showContent('dashboard');
+  </script>
+</body>
+</html>
