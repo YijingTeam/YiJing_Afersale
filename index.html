@@ -44,18 +44,23 @@
 
     /* 系统标题 */
     .system-title {
-      padding: 20px 15px;
+      height: 44px;
+      padding: 0 15px;
       font-size: 16px;
       font-weight: bold;
       border-bottom: 1px solid #ddd;
       white-space: nowrap;
       overflow: hidden;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .sidebar.collapsed .system-title {
       font-size: 0;
-      padding: 20px 0;
+      height: 44px;
+      padding: 0;
     }
 
     /* 导航菜单 */
@@ -183,6 +188,26 @@
       font-size: 13px;
     }
 
+    /* 当前页面高亮 */
+    .nav-item.current > .nav-link {
+      background: var(--sidebar-hover);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .nav-item.current > .nav-link .nav-icon {
+      color: var(--primary-color);
+    }
+    .submenu-item.current {
+      background: var(--sidebar-hover);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .submenu-item-nested.current {
+      background: var(--sidebar-hover);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
     /* 底部收起按钮 */
     .toggle-btn {
       padding: 16px;
@@ -214,7 +239,7 @@
     .main-content {
       flex: 1;
       margin-left: 220px;
-      padding: 20px;
+      padding: 64px 20px 20px 20px;
       background: #f5f5f5;
       min-height: 100vh;
       transition: margin-left 0.3s ease;
@@ -222,6 +247,10 @@
 
     .sidebar.collapsed ~ .main-content {
       margin-left: 50px;
+    }
+
+    .sidebar.collapsed ~ .lt-topbar {
+      left: 50px;
     }
 
     .content-header {
@@ -294,6 +323,45 @@
     .page-content { display: none; }
     .page-content.active { display: block; }
 
+    /* 顶部栏（fixed 定位，独立于内容区） */
+    .lt-topbar {
+      background: #fff;
+      height: 44px;
+      padding: 0 20px;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: fixed;
+      left: 220px;
+      top: 0;
+      right: 0;
+      z-index: 1;
+    }
+    .lt-topbar-left { display: flex; flex-direction: column; gap: 4px; }
+    .lt-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #999;
+    }
+    .lt-breadcrumb a { color: #999; text-decoration: none; }
+    .lt-breadcrumb a:hover { color: #861B2F; }
+    .lt-breadcrumb-icon { width: 14px; height: 14px; display: inline-block; vertical-align: middle; color: #999; }
+    .lt-breadcrumb-sep { color: #ccc; font-size: 11px; }
+    .lt-breadcrumb-current { color: #666; }
+    .lt-topbar-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .lt-btn { height: 28px; padding: 0 10px; font-size: 12px; border-radius: 4px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+    .lt-btn-default { background: #f5f5f5; color: #666; border-color: #e0e0e0; }
+    .lt-btn-default:hover { background: #e8e8e8; }
+    .lt-btn-primary { background: #861B2F; color: #fff; }
+    .lt-btn-primary:hover { background: #6d1526; }
+    .lt-user { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #666; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
+    .lt-user:hover { background: #f5f5f5; }
+
     /* 维修营业日报样式 */
     .rpt{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:13px;color:#333;display:flex;flex-direction:column;gap:12px}
     .hdr{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:0.5px solid #e0e0e0;position:relative}
@@ -333,6 +401,8 @@
     .sd{background:#C0DD97;color:#173404}
     .tech-scroll{max-height:220px;overflow-y:auto}
     .order-scroll{max-height:220px;overflow-y:auto}
+
+    /* 维修日报页面共用 .lt-topbar（全局定义在顶部） */
   </style>
 </head>
 <body>
@@ -349,7 +419,7 @@
           <span class="nav-arrow"></span>
         </div>
         <div class="submenu">
-          <div class="submenu-item" onclick="showContent('dashboard')">工作台首页</div>
+          <div class="submenu-item" onclick="showContent('dashboard')" data-module="dashboard">工作台首页</div>
         </div>
       </div>
       
@@ -372,19 +442,19 @@
       </div>
       
       <!-- 报表管理 -->
-      <div class="nav-item">
+      <div class="nav-item current">
         <div class="nav-link">
           <span class="nav-icon icon-report"></span>
           <span class="nav-text">报表管理</span>
           <span class="nav-arrow"></span>
         </div>
-        <div class="submenu">
-          <div class="submenu-item" onclick="showContent('service-report')">服务报表</div>
-          <div class="submenu submenu-nested">
-            <div class="submenu-item submenu-item-nested" onclick="showContent('repair-daily-report')">维修营业日报</div>
+        <div class="submenu open">
+          <div class="submenu-item" onclick="showContent('service-report')" data-module="service-report">服务报表</div>
+          <div class="submenu submenu-nested open">
+            <div class="submenu-item submenu-item-nested current" onclick="showContent('repair-daily-report')" data-module="repair-daily-report">维修营业日报</div>
           </div>
-          <div class="submenu-item" onclick="showContent('manage-report')">管理报表</div>
-          <div class="submenu-item" onclick="showContent('parts-report')">配件报表</div>
+          <div class="submenu-item" onclick="showContent('manage-report')" data-module="manage-report">管理报表</div>
+          <div class="submenu-item" onclick="showContent('parts-report')" data-module="parts-report">配件报表</div>
         </div>
       </div>
       
@@ -418,6 +488,25 @@
       </div>
     </div>
   </nav>
+
+  <!-- 顶部栏（独立区域） -->
+  <div class="lt-topbar">
+    <div class="lt-topbar-left">
+      <div class="lt-breadcrumb" id="topbar-breadcrumb">
+        <svg class="lt-breadcrumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5" fill="none"/></svg>
+        <span class="bc-item" data-level="1">工作台</span>
+        <span class="lt-breadcrumb-sep">&gt;</span>
+        <span class="bc-item" data-level="2">—</span>
+        <span class="lt-breadcrumb-sep bc-sep-3" style="display:none">&gt;</span>
+        <span class="bc-item bc-level-3" data-level="3" style="display:none">—</span>
+      </div>
+    </div>
+    <div class="lt-topbar-right">
+      <button class="lt-btn lt-btn-default">下载记录</button>
+      <button class="lt-btn lt-btn-primary">学习平台</button>
+      <div class="lt-user">总部/门店</div>
+    </div>
+  </div>
 
   <!-- 主内容区 -->
   <main class="main-content">
@@ -515,7 +604,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- /#page-repair-daily-report -->
 
     <!-- 其他报表页面占位 -->
     <div id="page-service-report" class="page-content">
@@ -535,7 +624,7 @@
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       sidebar.classList.toggle('collapsed');
-      
+
       // 关闭所有子菜单
       document.querySelectorAll('.submenu').forEach(sub => {
         sub.classList.remove('open');
@@ -596,10 +685,74 @@
       const page = document.getElementById(pageId);
       if (page) {
         page.classList.add('active');
+        // 动态更新面包屑
+        updateTopbar(module);
+        // 动态更新侧边栏高亮
+        updateMenuHighlight(module);
         // 如果是维修日报，初始化图表
         if (module === 'repair-daily-report') {
           initRepairReport();
         }
+      }
+    }
+
+    // 更新顶部栏面包屑（动态 DOM 遍历，不硬编码）
+    function updateTopbar(module) {
+      const bc = document.getElementById('topbar-breadcrumb');
+      if (!bc) return;
+      const level1 = bc.querySelector('[data-level="1"]');
+      const level2 = bc.querySelector('[data-level="2"]');
+      const level3 = bc.querySelector('[data-level="3"]');
+      const sep3 = bc.querySelector('.bc-sep-3');
+
+      // 重置
+      level2.textContent = '—';
+      level2.style.display = '';
+      level3.style.display = 'none';
+      sep3.style.display = 'none';
+
+      // 根据 module 找到目标菜单项
+      const target = document.querySelector('[data-module="' + module + '"]');
+      if (!target) return;
+
+      // 一级菜单文字（从 .nav-item > .nav-link > .nav-text 获取）
+      const navItem = target.closest('.nav-item');
+      level1.textContent = navItem.querySelector('.nav-link .nav-text').textContent.trim();
+
+      // 判断是几级菜单
+      if (target.classList.contains('submenu-item-nested')) {
+        // 三级菜单：level1 > level2 > level3
+        const l3Text = target.textContent.trim();
+        const nested = target.closest('.submenu-nested');
+        const l2El = nested.previousElementSibling; // 二级菜单项
+        level2.textContent = l2El ? l2El.textContent.trim() : '—';
+        level3.textContent = l3Text;
+        level3.style.display = '';
+        sep3.style.display = '';
+      } else if (target.classList.contains('submenu-item')) {
+        // 二级菜单：level1 > level2
+        level2.textContent = target.textContent.trim();
+      }
+    }
+
+    // 更新侧边栏高亮
+    function updateMenuHighlight(module) {
+      // 1. 清除所有 .current
+      document.querySelectorAll('.nav-item.current').forEach(function(el) { el.classList.remove('current'); });
+      document.querySelectorAll('.submenu-item.current').forEach(function(el) { el.classList.remove('current'); });
+      document.querySelectorAll('.submenu-item-nested.current').forEach(function(el) { el.classList.remove('current'); });
+
+      // 2. 找到对应 module 的菜单项
+      var target = document.querySelector('[data-module="' + module + '"]');
+      if (!target) return;
+
+      // 3. 给该菜单项加 .current
+      target.classList.add('current');
+
+      // 4. 如果是三级或二级菜单，给一级菜单加 .current
+      var parentNavItem = target.closest('.nav-item');
+      if (parentNavItem) {
+        parentNavItem.classList.add('current');
       }
     }
 
@@ -844,8 +997,8 @@
       document.getElementById('orderList').innerHTML = orderHtml;
     }
 
-    // 默认显示工作台
-    showContent('dashboard');
+    // 默认显示维修营业日报
+    showContent('repair-daily-report');
   </script>
 </body>
 </html>
